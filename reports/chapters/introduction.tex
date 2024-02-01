@@ -34,30 +34,36 @@ This section provides a detailed exploration of the research problem. The main q
 The primary aim of this study is to assess and compare the predictive accuracy of logistic regression and support vector machine algorithms based on diabetic patient's data to decide if a patient is diabetic or not. This study aims to provide valuable insights into the strengths and limitations of these supervised machine learning approaches, contributing to the enhancement of diabetes prediction methodologies.
 
 \textbf{Objectives:} 
-The main objectives of this study is to do data processing, implement logistic regression and support vector machine models, hyper parameter tuning to achieve highest possible predictive accuracy. At the end, we will evaluate the performance of both classification models.
+The main objectives of this study is to do data processing, implement logistic regression and support vector machine models, hyper parameter tuning to achieve highest possible predictive accuracy. At the end, we will evaluate the performance of both classification models based on accuracy and the best model is decided.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Solution approach}
 \label{sec:intro_sol} % label of Org section
-Briefly describe the solution approach and the methodology applied in solving the set aims and objectives.
+The study follows a systematic approach encompassing model implementation, data preprocessing, splitting of data, hyper parameter tuning and performance analysis. Thorough exploration of various meta parameter search strategies contribute to achieving the aims. I will make sure to provide a clear documentation to make sure results are reliable and can be easily reproducible.
 
-Depending on the project, you may like to alter the ``heading'' of this section. Check with you supervisor. Also, check what subsection or any other section that can be added in or removed from this template.
-
-\subsection{A subsection 1}
+\subsection{Dataset Description}
 \label{sec:intro_some_sub1}
-You may or may not need subsections here. Depending on your project's needs, add two or more subsection(s). A section takes at least two subsections. 
+This Diabetes Dataset \cite{dataset} has 2000 instances with 9 attributes - `Pregnancies`, `Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, `Age`, `Outcome`. The `Outcome` attribute indicates positive or negative for diabetes. 
 
-\subsection{A subsection 2}
+\subsection{Data Preprocessing}
 \label{sec:intro_some_sub2}
-Depending on your project's needs, add more section(s) and subsection(s).
+Data preprocessing is most important process. Mostly healthcare related data contains missing values that causes effectiveness of data. This process is essential for accurate result and successful predication using machine learning techniques.
 
-\subsubsection{A subsection 1 of a subsection}
+\subsubsection{Missing values removal}
 \label{sec:intro_some_subsub1}
-The command \textbackslash subsubsection\{\} creates a paragraph heading in \LaTeX.
+This process is meant to identify instances with zero value and eliminate all such instances. Through eliminating irrelevant instances we make feature subset and this process is called feature subset selection which reduces the dimensionality of data.
 
-\subsubsection{A subsection 2 of a subsection}
+\subsubsection{Splitting of data}
 \label{sec:intro_some_subsub2}
-Write your text here...
+After cleaning the data, the data is normalized in training and testing the models. After split, we train algorithm with training dataset and keep testing dataset aside. This testing dataset is used to test the trained model.
+
+\subsection{Model Implementation}
+\label{sec:intro_some_sub3}
+After data is ready, we apply machine learning techniques. Implement logistic regression and support vector machine models to predict diabetes on the dataset.
+
+\subsection{Hyper Parameter Tuning and Performance Analysis}
+\label{sec:intro_some_sub4}
+To determine the best performance model, we should consider the factors like hyper parameters, meta parameter search strategies for logistic regression and support vector machine to achieve more predictive accuracy.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary of contributions and achievements} %  use this section 
