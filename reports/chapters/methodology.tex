@@ -2,9 +2,29 @@
 % in this template few examples are mention
 \chapter{Methodology}
 \label{ch:method} % Label for method chapter
+\section{Dataset Description}
+The diabetes data set is originated from kaggle \citep{dataset}. The dataset contains 2000 patients and their corresponding 9 unique attributes. The nine attributes that are used for the prediction of diabetes are `Pregnancies`, 
+`Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, `Age`, `Outcome`. The `Outcome` attribute is taken as a dependent or target variable, and the remaining eight attributes are taken as independent feature variables. The diabetes attribute `Outcome` consists of binary value where 0 means non-diabetes, and 1 implies diabetes.
 
-We mentioned in Chapter~\ref{ch:into} %[example backward reference to a chapter or section.]
-that a project report's structure could follow a particular paradigm. Hence, the organization of a report (effectively the Table of Content of a report) can vary depending on the type of project you are doing. Check which of the given examples suit your project. Alternatively, follow your supervisor's advice.
+\begin{figure}[ht]
+    \centering    \includegraphics[scale=1.0]{figures/data_info.pdf}
+    \caption{Dataset attributes and their data types.}
+    \label{fig:capture_a}
+\end{figure}
+Here, all the attributes in Fig~\ref{fig:capture_a} are numeric and there are no null values. 
+\begin{figure}[ht]
+    \centering    \includegraphics[scale=0.8]{figures/data_top5.pdf}
+    \caption{Top 5 patients data.}
+    \label{fig:capture_b}
+\end{figure}
+
+\subsection{Correlation Matrix}
+A correlation matrix is a powerful tool for data analysis. It is a statistical technique used to evaluate the relationship between two variables in a dataset. It provides a correlation coefficient for each cell. The correlation coefficient value remains in the range between -1 and 1.
+
+The correlation coefficient value -1 indicates notable negative linear correlation. The coefficient value 1 indicates notable positive linear correlation. The coefficient value 0 indicates no linear correlation.
+
+A correlation matrix helps summarize data, identify patterns, and make decisions based on relationships between attributes. It helps us to gain insights for building better machine learning models by understanding which attributes are correlated.
+
 
 \section{Examples of the sections of a methodology chapter}
 A general report structure is summarised (suggested) in Table~\ref{tab:gen_template}. Table~\ref{tab:gen_template} describes that, in general, a typical report structure has three main parts: (1) front matter, (2) main text, and (3) end matter. %[\textbf{also notice that the preceding sentence is an example of a numbered list in a text body}]. 
@@ -40,6 +60,7 @@ The structure of the front matter and end matter will remain the same for all th
         \bottomrule
     \end{tabular}
 \end{table}
+
 
 \subsection{Example of a software/Web development main text structure}
 \label{subsec:se_chpters}
