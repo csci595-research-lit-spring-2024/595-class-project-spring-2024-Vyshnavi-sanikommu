@@ -19,6 +19,7 @@ Here, all the attributes in Fig~\ref{fig:capture_a} are numeric and there are no
 \end{figure}
 
 \subsection{Correlation Matrix}
+\label{subsec:corr_matrix}
 A correlation matrix is a powerful tool for data analysis. It is a statistical technique used to evaluate the relationship between two variables in a dataset. It provides a correlation coefficient for each cell. The correlation coefficient value remains in the range between -1 and 1.
 
 The correlation coefficient value -1 indicates notable negative linear correlation. The coefficient value 1 indicates notable positive linear correlation. The coefficient value 0 indicates no linear correlation.
@@ -52,6 +53,39 @@ Out of the 2000 instances, 1316 are associated with non-diabetic patients, while
 
 \section{Data Preprocessing}
 
+Data preprocessing helps to transform data used to built a model which gives higher performance metrics. This process performs various functions like handling missing values, normalization and feature selection to improve the quality of data.
+
+\subsection{Missing Values Identification}
+Fig~\ref{fig:capture_a} indicates the absence of null values for all attributes. However, Fig~\ref{fig:capture_b} illustrates instances of zero values for attributes which are irrelevant and need to handled. Table~\ref{tab:table-01-missing-values} shows the number of zero values for each attribute.
+
+ \begin{table}[ht!]
+    \centering
+    \caption{The number of zero missing values in dataset}
+    \input{chapters/tables/table-01-missing-values}
+    \label{tab:table-01-missing-values}
+\end{table}
+
+Here, we have observed numerous attributes with zero values, impacting the data quality. We replaced the zero values with the corresponding mean values using simpleimputer.
+
+Fig~\ref{fig:capture_b} and Fig~\ref{fig:capture_f} shows the top five patients data. If you compare these figures, Fig~\ref{fig:capture_f} indicates that zero values in Fig~\ref{fig:capture_b} was replaced with mean for each attribute. Now, there are no missing values either null or zero values in each attribute.
+
+\begin{figure}[ht]
+    \centering    \includegraphics[scale=0.8]{figures/data_info_after_imputer.pdf}
+    \caption{Top 5 patients data after handling missing values}
+    \label{fig:capture_f}
+\end{figure}
+
+\subsection{Feature Selection based on Correlation Coefficient}
+After handling missing values, the correlation coefficient is calculated in this method which correlates with the output and input attributes. This was discussed under section~\ref{subsec:corr_matrix}. We have created a Table~\ref{tab:table-02-corr_matrix} to show correlation coefficient values of each attribute towards target attribute.
+
+ \begin{table}[ht!]
+    \centering
+    \caption{The correlation coefficient values}
+    \input{chapters/tables/table-02-correlation}
+    \label{tab:table-02-corr_matrix}
+\end{table}
+
+We used 0.2 as a cut-off for relevant attributes. Hence   `BloodPressure` and `DiabetesPedigreeFunction` features are removed. `Pregnancies`, `Glucose`, `SkinThickness`, `Insulin`, `BMI`, and `Age` are our most relevant six input attributes.
 
 \section{Example of a Figure in \LaTeX}
 Figure~\ref{fig:chart_a} is an example of a figure in \LaTeX. For more details, check the link:
