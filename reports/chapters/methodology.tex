@@ -87,6 +87,50 @@ After handling missing values, the correlation coefficient is calculated in this
 
 We used 0.2 as a cut-off for relevant attributes. Hence   `BloodPressure` and `DiabetesPedigreeFunction` features are removed. `Pregnancies`, `Glucose`, `SkinThickness`, `Insulin`, `BMI`, and `Age` are our most relevant six input attributes.
 
+\subsection{Data Normalization}
+Normalization refers to the process of scaling and transforming numeric features to a standard scale or distribution. Feature scaling is a technique to standardize or normalize the range of independent features or variables of a dataset. The goal of feature scaling is to ensure that all features contribute equally to the learning process, preventing certain features from dominating others based on their scale. In Table~\ref{tab:table-02-corr_matrix}, we can see that `Glucose` and `Outcome` have a 0.49 correlation coefficient. Hence these are highly correlated. After completing data preprocessing, we have total 2000 instances.
+
+\section{Dataset Split into Train and Test Data}
+After data cleaning and preprocessing, the dataset becomes ready to train and test. We are using test split method to split data randomly into the training and testing set. Here, I am partitioning the data into a training set comprising 70\% and a test set comprising 30\%.
+
+\section{Model Implementation}
+This is the important phase which includes model building for diabetes prediction. In this, we have implemented logistic regression and support vector machine algorithms.
+
+\subsection{Logistic Regression}
+Logistic Regression is one of the most common classification models. It is used for classification task where the goal is to predict the probability that an instance belongs to a given class or not. 
+
+\begin{algorithm}
+    \caption{Diabetes Prediction using Logistic Regression}
+    \label{algo:algo_lr}
+    \begin{algorithmic}[1]
+        \Require{Input features $X$ and labels $y$ for training data}
+        \Ensure{Generate performance metrics like accuracy, confusion matrix, precision, recall, f1-score}
+        \Statex
+        \State {Create a standard logistic regression model with default hyperparameters such as regularization strength (C), solver, penalty}
+        \State {Fit the model with training data}
+        \State {Predict outcomes for testing data using the trained model}
+        \State {Evaluate the model performance on testing data}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection{Support Vector Machine}
+Support Vector Machine is used for linear or nonlinear classification, regression, and outlier detection tasks. This classifier aims to establish a hyperplane that can separate the classes by adjusting the distance between data points and the hyperplane. 
+\begin{algorithm}
+    \caption{Diabetes Prediction using Support Vector Machine}
+    \label{algo:algo_svm}
+    \begin{algorithmic}[1]
+        \Require{Input features $X$ and labels $y$ for training data}
+        \Ensure{Generate performance metrics like accuracy, confusion matrix, precision, recall, f1-score}
+        \Statex
+        \State {Create a standard svm model with default hyperparameters such as regularization parameter (C), kernel, gamma, degree}
+        \State {Fit the model with training data}
+        \State {Predict outcomes for testing data using the trained model}
+        \State {Evaluate the model performance on testing data}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
+    \end{algorithmic}
+\end{algorithm}
+
 \section{Example of a Figure in \LaTeX}
 Figure~\ref{fig:chart_a} is an example of a figure in \LaTeX. For more details, check the link:
 
