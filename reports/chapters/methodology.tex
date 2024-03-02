@@ -108,6 +108,7 @@ Logistic Regression is one of the most common classification models. It is used 
         \Statex
         \State {Create a standard logistic regression model with default hyperparameters such as regularization strength (C), solver, penalty}
         \State {Fit the model with training data}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score for the trained model}
         \State {Predict outcomes for testing data using the trained model}
         \State {Evaluate the model performance on testing data}
         \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
@@ -125,6 +126,55 @@ Support Vector Machine is used for linear or nonlinear classification, regressio
         \Statex
         \State {Create a standard svm model with default hyperparameters such as regularization parameter (C), kernel, gamma, degree}
         \State {Fit the model with training data}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score for the trained model}
+        \State {Predict outcomes for testing data using the trained model}
+        \State {Evaluate the model performance on testing data}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection{Hyperparameter Tuning with GridSearchCV}
+Hyperparameter Tuning is a process to select optimal values for a machine learning models hyperparameters. The goal of hyperparameter tuning is to find the values that leads to the best performance for a given problem. We should consider the factors like hyper parameters, meta parameter search strategies to achieve more predictive performance metrics.
+
+\subsubsection{Grid Search}
+Grid Search is a method for hyper parameter optimization that involves specifying a list of values for each hyper parameter to optimize. Subsequently, the model is trained for each combination of these values, and the optimal values for the hyper parameters are selected based on the models' performance.
+
+\subsubsection{Hyperparameter Tuning for Logistic Regression}
+Logistic Regression is one of the most common classification algorithms. It is used for classification task where the goal is to predict the probability that an instance belongs to a given class or not. There are multiple hyper parameters such as regularization strength (C), solver, penalty. We have solvers namely, `lbfgs`, `newton-cg`, `liblinear`, `sag`, `saga`. We have penalties namely, `l1`, `l2`, `elasticnet`, `none`.
+
+\begin{algorithm}
+    \caption{Diabetes Prediction using hyperparameter tuning technique for Logistic Regression}
+    \label{algo:algo_hp_lr}
+    \begin{algorithmic}[1]
+        \Require{Input features $X$ and labels $y$ for training data}
+        \Ensure{Generate best parameters and calculate performance metrics like accuracy, confusion matrix, precision, recall, f1-score using best parameters}
+        \Statex
+       \State {Create a standard logistic regression model with no hyperparameters such as regularization strength (C), solver, penalty}
+        \State {Create a paramgrid dictionary with all hyperparameters related to logistic regression model you would like to pass to gridsearch for tuning}
+        \State {Create a gridsearchcv model by passing parameters such as model estimator, paramgrid, cross validation, scoring methods, refit, verbose}
+        \State {Generate the best estimators, best parameters and best scores for training set}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score for trained model}
+        \State {Predict outcomes for testing data using the trained model}
+        \State {Evaluate the model performance on testing data}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
+    \end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Hyperparameter Tuning for Support Vector Machine}
+This classifier aims at forming a hyper plane that can separate the classes as much as possible by adjusting the 
+distance between the data points and the hyper plane. There are several kernels based on which the hyper plane is decided. There are multiple hyper parameters such as regularization parameter (C), kernel, gamma, degree.  We have kernels namely, `linear`, `poly`, `rbf`, and `sigmoid`. 
+\begin{algorithm}
+    \caption{Diabetes Prediction using hyperparameter tuning technique for Support Vector Machine}
+    \label{algo:algo_hp_svm}
+    \begin{algorithmic}[1]
+        \Require{Input features $X$ and labels $y$ for training data}
+        \Ensure{Generate performance metrics like accuracy, confusion matrix, precision, recall, f1-score}
+        \Statex
+        \State {Create a standard svm model with no hyperparameters such as regularization parameter (C), kernel, gamma, degree}
+        \State {Create a paramgrid dictionary with all hyperparameters related to svm model you would like to pass to gridsearch for tuning}
+        \State {Create a gridsearchcv model by passing parameters such as model estimator, paramgrid, cross validation, scoring methods, refit, verbose}
+        \State {Generate the best estimators, best parameters and best scores for training set}
+        \State {Calculate accuracy, confusion matrix, precision, recall and f1-score for trained model}
         \State {Predict outcomes for testing data using the trained model}
         \State {Evaluate the model performance on testing data}
         \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
