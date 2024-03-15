@@ -4,18 +4,29 @@
 \label{ch:method} % Label for method chapter
 \section{Dataset Description and Data Exploration}
 The diabetes data set is originated from kaggle \citep{dataset}. The dataset contains 2000 patients and their corresponding 9 unique attributes. The nine attributes that are used for the prediction of diabetes are `Pregnancies`, 
-`Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, `Age`, `Outcome`. The `Outcome` attribute is taken as a dependent or target variable, and the remaining eight attributes are taken as independent feature variables. The diabetes attribute `Outcome` consists of binary value where 0 means non-diabetes, and 1 implies diabetes.
+`Glucose`, `BloodPressure`, `SkinThickness`, `Insulin`, `BMI`, `DiabetesPedigreeFunction`, 
+`Age`, `Outcome`. The `Outcome` attribute is taken as a dependent or target variable, and the remaining eight attributes are taken as independent feature variables. 
+ \begin{table}[ht!]
+    \centering
+    \caption{Dataset attributes and their data types}
+    \input{tables/table-03-data-info}
+    \label{tab:table-03-data-info}
+\end{table}
 
-\begin{figure}[ht]
-    \centering    \includegraphics[scale=1.0]{figures/data_info.pdf}
-    \caption{Dataset attributes and their data types.}
-    \label{fig:capture_a}
-\end{figure}
-Here, all the attributes in Fig~\ref{fig:capture_a} are numeric and there are no null values. 
 \begin{figure}[ht]
     \centering    \includegraphics[scale=0.8]{figures/data_top5.pdf}
     \caption{Top 5 patients data.}
     \label{fig:capture_b}
+\end{figure}
+
+The diabetes attribute `Outcome` is a categorical feature which consists of binary value where 0 means non-diabetes, and 1 implies diabetes. There are no null values for all attributes but there are zero values for few attributes which needs to be handled.
+
+\subsection{Data Distribution using Histograms}
+Fig~\ref{fig:capture_d} gives a better feel than the raw numbers and percentiles of the distributions of our numerical attributes. It shows how each feature and label is distributed along different ranges which further confirms the need for scaling. Next, wherever you see discrete bars, it basically means that each of these is actually a categorical variable. We will need to handle these categorical variables before applying Machine Learning. Our outcome labels have two classes, 0 for no disease and 1 for disease. 
+\begin{figure}[ht]
+    \centering    \includegraphics[scale=0.3]{figures/data_attr_distribution.pdf}
+    \caption{Data Distribution for each attribute}
+    \label{fig:capture_d}
 \end{figure}
 
 \subsection{Correlation Matrix}
@@ -32,18 +43,12 @@ A correlation matrix helps summarize data, identify patterns, and make decisions
     \label{fig:capture_c}
 \end{figure}
 
-\subsection{Data Distribution using Histograms}
-Fig~\ref{fig:capture_d} gives a better feel than the raw numbers and percentiles of the distributions of our numerical attributes. It shows how each feature and label is distributed along different ranges which further confirms the need for scaling. Next, wherever you see discrete bars, it basically means that each of these is actually a categorical variable. We will need to handle these categorical variables before applying Machine Learning. Our outcome labels have two classes, 0 for no disease and 1 for disease. 
-\begin{figure}[ht]
-    \centering    \includegraphics[scale=0.8]{figures/data_attr_distribution.pdf}
-    \caption{Data Distribution for each attribute}
-    \label{fig:capture_d}
-\end{figure}
+Here, we have to check the attributes correlated to target feature `Outcome`. In Fig~\ref{fig:capture_c}, `Glucose` has highest correlation coefficient value - 0.46 and `BMI` has 0.28, `Age` has 0.24 and `Pregnancies` has 0.22 compare to other attributes.
 
 \subsection{Bar plot for Outcome class}
 Fig~\ref{fig:capture_e} shows that the data is biased towards data points having outcome value as 0 which means that diabetes was not present actually. The number of non-diabetics is almost twice the number of diabetic patients.
 
-Out of the 2000 instances, 1316 are associated with non-diabetic patients, while the remaining 684 pertain to diabetic patients.
+Out of the 2000 instances, 1316 are associated with non-diabetic patients, while the remaining 684 pertain to diabetic patients. Therefore, it is essential to split the data efficiently for training and testing the model to ensure optimal results.
 \begin{figure}[ht]
     \centering    \includegraphics[scale=0.8]{figures/data_distribution.pdf}
     \caption{Distribution of Outcome (0s and 1s)}
@@ -56,12 +61,12 @@ Out of the 2000 instances, 1316 are associated with non-diabetic patients, while
 Data preprocessing helps to transform data used to built a model which gives higher performance metrics. This process performs various functions like handling missing values, normalization and feature selection to improve the quality of data.
 
 \subsection{Missing Values Identification}
-Fig~\ref{fig:capture_a} indicates the absence of null values for all attributes. However, Fig~\ref{fig:capture_b} illustrates instances of zero values for attributes which are irrelevant and need to handled. Table~\ref{tab:table-01-missing-values} shows the number of zero values for each attribute.
+There are no null values for all attributes. However, Fig~\ref{fig:capture_b} illustrates instances of zero values for attributes which are irrelevant and need to handled. Table~\ref{tab:table-01-missing-values} shows the number of zero values for each attribute before imputation and after performing imputation.
 
  \begin{table}[ht!]
     \centering
     \caption{The number of zero missing values in dataset}
-    \input{chapters/tables/table-01-missing-values}
+    \input{tables/table-01-missing-values}
     \label{tab:table-01-missing-values}
 \end{table}
 
@@ -81,7 +86,7 @@ After handling missing values, the correlation coefficient is calculated in this
  \begin{table}[ht!]
     \centering
     \caption{The correlation coefficient values}
-    \input{chapters/tables/table-02-correlation}
+    \input{tables/table-02-correlation}
     \label{tab:table-02-corr_matrix}
 \end{table}
 
@@ -94,10 +99,10 @@ Normalization refers to the process of scaling and transforming numeric features
 After data cleaning and preprocessing, the dataset becomes ready to train and test. We are using test split method to split data randomly into the training and testing set. Here, I am partitioning the data into a training set comprising 70\% and a test set comprising 30\%.
 
 \section{Model Implementation}
-This is the important phase which includes model building for diabetes prediction. In this, we have implemented logistic regression and support vector machine algorithms.
+This is the important phase which includes model building for diabetes prediction.
 
 \subsection{Logistic Regression}
-Logistic Regression is one of the most common classification models. It is used for classification task where the goal is to predict the probability that an instance belongs to a given class or not. 
+It is used for classification task where the goal is to predict the probability that an instance belongs to a given class or not.
 
 \begin{algorithm}
     \caption{Diabetes Prediction using Logistic Regression}
@@ -116,7 +121,7 @@ Logistic Regression is one of the most common classification models. It is used 
 \end{algorithm}
 
 \subsection{Support Vector Machine}
-Support Vector Machine is used for linear or nonlinear classification, regression, and outlier detection tasks. This classifier aims to establish a hyperplane that can separate the classes by adjusting the distance between data points and the hyperplane. 
+It is used for linear or nonlinear classification, regression, and outlier detection tasks. This classifier aims to establish a hyperplane that can separate the classes by adjusting the distance between data points and the hyperplane.
 \begin{algorithm}
     \caption{Diabetes Prediction using Support Vector Machine}
     \label{algo:algo_svm}
