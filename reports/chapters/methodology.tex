@@ -15,7 +15,7 @@ The diabetes data set is originated from kaggle \citep{dataset}. The dataset con
 
 \begin{figure}[ht]
     \centering    \includegraphics[scale=0.8]{figures/data_top5.pdf}
-    \caption{Top 5 patients data.}
+    \caption{Top 5 patients data}
     \label{fig:capture_b}
 \end{figure}
 
@@ -41,7 +41,7 @@ A correlation matrix helps summarize data, identify patterns, and make decisions
     \centering    \includegraphics[scale=0.8]{figures/data_correlation.pdf}
     \caption{Correlation Matrix}
     \label{fig:capture_c}
-\end{figure}
+\end{figure} 
 
 Here, we have to check the attributes correlated to target feature `Outcome`. In Fig~\ref{fig:capture_c}, `Glucose` has highest correlation coefficient value - 0.46 and `BMI` has 0.28, `Age` has 0.24 and `Pregnancies` has 0.22 compare to other attributes.
 
@@ -57,7 +57,6 @@ Out of the 2000 instances, 1316 are associated with non-diabetic patients, while
 
 
 \section{Data Preprocessing}
-
 Data preprocessing helps to transform data used to built a model which gives higher performance metrics. This process performs various functions like handling missing values, normalization and feature selection to improve the quality of data.
 
 \subsection{Missing Values Identification}
@@ -185,6 +184,59 @@ distance between the data points and the hyper plane. There are several kernels 
         \State {Calculate accuracy, confusion matrix, precision, recall and f1-score}
     \end{algorithmic}
 \end{algorithm}
+
+\section{Evaluation Metrics}
+Evaluation would be the final step of prediction model. Here, we evaluate the prediction results using various evaluation metrics like classification accuracy, confusion matrix, precision, recall, f1-score.
+
+\subsection{Classification Accuracy}
+It is the ratio of number of correct predictions to the total number of input samples. 
+
+\begin{equation}
+\label{eq:accuracy_formula} 
+Accuracy = \frac{\text{Number of correct predictions}}{\text{Total number of predictions made}}
+\end{equation}
+
+\subsection{Confusion Matrix}
+It provides us a matrix output that describes the performance of the model. 
+
+\begin{equation}
+\label{eq:confusion_matrix}
+\text{Confusion Matrix} = \begin{pmatrix}
+\text{TP} & \text{FP} \\
+\text{FN} & \text{TN}
+\end{pmatrix}
+\begin{aligned}
+Where:
+\text{TP} & = \text{True Positives} \\
+\text{FP} & = \text{False Positives} \\
+\text{FN} & = \text{False Negatives} \\
+\text{TN} & = \text{True Negatives}
+\end{aligned}
+\end{equation}
+
+\subsection{Precision}
+It is the number of correct positive results divided by number of positive results predicted by the classifier. 
+
+\begin{equation}
+\label{eq:precision} 
+Accuracy = \frac{TP}{(TP+FP)}
+\end{equation}
+
+\subsection{Recall}
+It is the number of correct positive results divided by number of all relevant samples. 
+
+\begin{equation}
+\label{eq:recall} 
+Accuracy = \frac{TP}{(TP+FN)}
+\end{equation}
+
+\subsection{F1-score}
+It is used to measure a test’s accuracy. F1-score is the harmonic mean between precision and recall. The range for  f1-score is [0, 1]. It tells you how precise your classifier is as well as how robust it is.
+
+\begin{equation}
+\label{eq:f1-score} 
+F1 = 2 \times \frac{1}{(\frac{1}{precision}) + (\frac{1}{recall})}
+\end{equation}
 
 \section{Summary}
  This methodology provides a structured approach to exploring and showcasing the significance of hyperparameter tuning in enhancing the predictive capabilities of logistic regression and support vector machine models for diabetes prediction. This structured approach encompasses aspects such as dataset characteristics, data exploration, data visualization, preprocessing, normalization, and feature selection to ensure data quality and model design. It delves into data splitting for training and testing, the training of classification models using the training dataset, and the crucial step of hyperparameter tuning to enhance performance metrics by identifying optimal parameters.
