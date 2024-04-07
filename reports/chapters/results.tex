@@ -1,62 +1,85 @@
 \chapter{Results}
 \label{ch:results}
 \section{Results for ML methods - LR and SVM}
-The accuracy of the machine learning algorithms can be calculated from the confusion matrix. Eqs. \ref{eq:accuracy_formula}, \ref{eq:precision}, \ref{eq:recall}, \ref{eq:f1-score} are used to calculate the performance measurement of the classification method.
+The evaluation of machine learning algorithms is crucial for assessing their effectiveness in predicting diabetes. We use various performance metrics such as accuracy, precision, recall and f1-score to compare the classification methods. These metrics are calculated using equations \ref{eq:accuracy_formula}, \ref{eq:precision}, \ref{eq:recall}, \ref{eq:f1-score}, derived from the confusion matrix.
 
-The results chapter tells a reader about your findings based on the methodology you have used to solve the investigated problem. For example: 
-\begin{itemize}
-    \item If your project aims to develop a software/web application, the results may be the developed software/system/performance of the system, etc., obtained using a relevant methodological approach in software engineering. 
-    
-    \item If your project aims to implement an algorithm for its analysis, the results may be the performance of the algorithm obtained using a relevant experiment design. 
-    
-    \item If your project aims to solve some problems/research questions over a collected dataset, the results may be the findings obtained using the applied tools/algorithms/etc. 
-\end{itemize}
-Arrange your results and findings in a logical sequence. 
-
-
-
-\section{A section}
-
-...
-
-\clearpage
-\section{Example of a Table in \LaTeX}
-Table~\ref{tab:_ex_tab} is an example of a table created using the package \LaTeX  ``booktabs.'' do check the link: \href{https://en.wikibooks.org/wiki/LaTeX/Tables}{wikibooks.org/wiki/LaTeX/Tables} for more details. A table should be clean and readable. Unnecessary horizontal lines and vertical lines in tables make them unreadable and messy. The example in Table~\ref{tab:_ex_tab} uses a minimum number of liens (only necessary ones). Make sure that the top rule and bottom rule (top and bottom horizontal lines) of a table are present. 
+Table \ref{tab:p_metrics} shows performance measures of logistic regression and svm classifiers for training and testing datasets.
 
 \begin{table}[h!]
     \centering
-    \caption{Example of a table in \LaTeX}
-    \label{tab:_ex_tab}
-    \begin{tabular}{llr}     
+    \caption{Performance metrics}
+    \label{tab:p_metrics}
+    \begin{tabular}{llrrrr}     
         \toprule
-        \multicolumn{2}{c}{Bike} \\
-        \cmidrule(r){1-2}
-        Type    &  Color & Price (\pounds) \\
+        Classifier  &   DataSet Type &   Precision   &   Recall  &   F1-score    &   Accuracy (\%) \\
         \midrule
-        Electric    & black   & 700   \\
-        Hybrid      & blue    & 500   \\
-        Road        & blue    & 300   \\
-        Mountain    & red     & 300   \\
-        Folding     & black   & 500   \\
+        LR  &   Training    &   0.70   &   0.55   &   0.62    &   76\%   \\
+        LR  &   Testing &   0.74   &   0.58   &   0.65    &   78\%   \\
+        SVM  &   Training    &   0.69   &   0.55   &   0.62    &   76\%   \\
+        SVM  &   Testing &   0.75   &   0.58   &   0.66    &   79\%   \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-\section{Example of captions style}
+Here, svm model achieves the highest accuracy of 79\% on test dataset, while both models exhibit similar accuracy on the training dataset. The confusion matrix for the SVM model on the test dataset is provided in Table \ref{tab:conf_matrix}.
 
-\begin{itemize}
-    \item The \textbf{caption of a Figure (artwork) goes below} the artwork (Figure/Graphics/illustration). See example artwork in . 
-    \item  The \textbf{caption of a Table goes above} the table. See the example in Table~\ref{tab:_ex_tab}.
-    \item  The \textbf{caption of an Algorithm goes above} the algorithm. See the example in Algorithm.
-    \item The \textbf{caption of a Listing goes below} the Listing  (Code snippet). See example listing in Listing. 
-\end{itemize} 
+\begin{table}[h!]
+    \centering
+    \caption{Confusion Matrix for SVM (Test Data)}
+    \label{tab:conf_matrix}
+    \begin{tabular}{llr}     
+        \toprule
+        & Diabetic  &   Non-diabetic \\
+        \midrule
+        Diabetic &  237  &   26   \\
+        Non-diabetic &  57    &   80  \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
+Despite these promising results, determining the best model for predicting diabetes requires further investigation and analysis.
 
+\section{Hyperparameter Tuning Results for LR and SVM Using GridSearchCV}
+After applying GridSearchCV for hyperparameter tuning, both logistic regression and svm models demonstrated significantly improved performance compared to their standard configurations which was shown in Table \ref{tab:p_metrics}. 
 
+Table \ref{tab:gs_p_metrics} shows performance measures of logistic regression and svm classifier for training and testing datasets after tuning.
 
+\begin{table}[h!]
+    \centering
+    \caption{Performance metrics after hyperparameter tuning}
+    \label{tab:gs_p_metrics}
+    \begin{tabular}{llrrrr}     
+        \toprule
+        Classifier  &   DataSet Type &   Precision   &   Recall  &   F1-score    &   Accuracy (\%) \\
+        \midrule
+        LR  &   Training    &   0.70   &   0.56   &   0.62    &   77\%   \\
+        LR  &   Testing &   0.75   &   0.58   &   0.66    &   79\%   \\
+        SVM  &   Training    &   0.75   &   0.57   &   0.65    &   79\%   \\
+        SVM  &   Testing &   0.80   &   0.56   &   0.66    &   80\%   \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Here, svm model achieves the highest accuracy of 80\% on the test dataset, while lr and svm models achieve 77\% and 79\% accuracy on the training dataset. The confusion matrix for the SVM model on the test dataset is provided in Table \ref{tab:gs_conf_matrix}
+
+\begin{table}[h!]
+    \centering
+    \caption{Confusion Matrix for SVM (Test Data)}
+    \label{tab:gs_conf_matrix}
+    \begin{tabular}{llr}     
+        \toprule
+        & Diabetic  &   Non-diabetic \\
+        \midrule
+        Diabetic &  244  &   19   \\
+        Non-diabetic &  60    &   77  \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The optimized models achieved higher accuracy scores, highlighting the effectiveness of hyperparameter tuning in enhancing predictive capabilities.
 
 \section{Summary}
-Write a summary of this chapter.
+The evaluation of machine learning algorithms lr and svm for predicting diabetes demonstrated promising results. While both models exhibited similar performance on the training dataset, svm outperformed lr slightly on the testing dataset with the highest accuracy of 79\%. Hyperparameter tuning using GridSearchCV further enhanced the models performance, with the optimized SVM achieving a testing accuracy of 80\%. These findings underscore the effectiveness of hyperparameter tuning in improving predictive capabilities.
 
 
 
