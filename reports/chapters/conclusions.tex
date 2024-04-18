@@ -1,11 +1,11 @@
 \chapter{Conclusions and Future Work}
 \label{ch:con}
 \section{Conclusions}
-Typically a conclusions chapter first summarizes the investigated problem and its aims and objectives. It summaries the critical/significant/major findings/results about the aims and objectives that have been obtained by applying the key methods/implementations/experiment set-ups. A conclusions chapter draws a picture/outline of your project's central and the most signification contributions and achievements. 
+Early detection of diabetes is one of the significant challenges in the health care industry. Our research delved into the realm of diabetes prediction using logistic regression and support vector machines models, aiming to shed light on their comparative performance metrics and underlying factors. 
 
-A good conclusions summary could be approximately 300--500 words long, but this is just a recommendation.
+In our research, we designed a system which can predict diabetes with high accuracy. We preprocessed the data by addressing missing values, zero-valued features, and employing imputation techniques across all features. Using the feature reduction method, we dropped two features. We used six input features - `Pregnancies`, `Glucose`, `SkinThickness`, `Insulin`, `BMI` and `Age` and one output feature `Outcome` in the  dataset \citep{dataset}. We explored the efficacy of two machine learning algorithms, lr and svm to predict diabetes and evaluated the performance on various measures like accuracy, precision, recall, and f1-score. These models provided an accuracy greater than 70\%. 
 
-A conclusions chapter followed by an abstract is the last things you write in your project report.
+Furthermore, our exploration of hyperparameter optimization strategies underscores the importance of fine-tuning model parameters to achieve optimal predictive performance. To enhance model performance, we employed hyperparameter tunning using gridsearchcv strategy, optimizing parameters. These models provided almost same accuracy before tuning and svm outperformed LR for both train/test split method. After tuning, the optimized models exhibited notable improvements in accuracy, with svm achieving an impressive accuracy of approximately 80\% on the test dataset. while lr slightly trailing behind, still demonstrated commendable performance, boasting an accuracy close to 79\%.
 
 \section{Future work}
 This section should refer to Chapter~\ref{ch:results} where the author has reflected their criticality about their own solution. The future work is then sensibly proposed in this section.
