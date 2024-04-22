@@ -8,10 +8,18 @@ In our research, we designed a system which can predict diabetes with high accur
 Furthermore, our exploration of hyperparameter optimization strategies underscores the importance of fine-tuning model parameters to achieve optimal predictive performance. To enhance model performance, we employed hyperparameter tunning using gridsearchcv strategy, optimizing parameters. These models provided almost same accuracy before tuning and svm outperformed LR for both train/test split method. After tuning, the optimized models exhibited notable improvements in accuracy, with svm achieving an impressive accuracy of approximately 80\% on the test dataset. while lr slightly trailing behind, still demonstrated commendable performance, boasting an accuracy close to 79\%.
 
 \section{Future work}
-This section should refer to Chapter~\ref{ch:results} where the author has reflected their criticality about their own solution. The future work is then sensibly proposed in this section.
+The results from Chapter~\ref{ch:results} indicate that both logistic regression and support vector machine classifiers achieved reasonable performance in predicting diabetes, with svm attaining slightly higher accuracy. However, there are several areas for future research that can further enhance the predictive capabilities of these models and address their limitations.
 
-\textbf{Guidance on writing future work:} While working on a project, you gain experience and learn the potential of your project and its future works. Discuss the future work of the project in technical terms. This has to be based on what has not been yet achieved in comparison to what you had initially planned and what you have learned from the project. Describe to a reader what future work(s) can be started from the things you have completed. This includes identifying what has not been achieved and what could be achieved. 
+\begin{itemize}
+\item A critical aspect for future work is the expansion of the dataset. The current study dataset may not fully represent the diverse population affected by diabetes. Increasing the dataset's size and diversity would improve the model's generalizability and robustness. It would also help reduce biases and ensure that the models work across different demographics and geographic locations.
 
+\item Future studies can delve into additional feature engineering techniques. By incorporating domain-specific knowledge from medical professionals and using automated feature selection methods like recursive feature elimination, new features may be uncovered that contribute significantly to prediction accuracy. This approach could also lead to more refined models with reduced risks of overfitting.
 
+\item Future work could explore more complex architectures such as deep neural networks (DNNs), convolutional neural networks (CNNs), and recurrent neural networks (RNNs). These models might capture intricate patterns in the data that traditional machine learning models might miss. Deep learning methods could improve prediction accuracy and add robustness to the models.
 
-A good future work summary could be approximately 300--500 words long, but this is just a recommendation.
+\item Another crucial aspect for future work is managing class imbalances. Class imbalance in the dataset can lead to biased models and high false negatives. Techniques like oversampling,undersampling, and Synthetic Minority Over-sampling Technique (SMOTE) could be used to balance the classes, resulting in improved recall and better model performance.
+
+\item The current study utilized gridsearchcv for hyperparameter tuning, other methods such as randomizedsearchcv and bayesian optimization offer more flexible and efficient tuning processes. Future work could investigate these methods to optimize model performance further, potentially achieving higher accuracy and reliability.
+
+\item Integrating these models into clinical practice is a valuable future direction. Building a user-friendly interface for healthcare professionals and conducting clinical trials would be essential to validate the models' effectiveness in real-world. This step is crucial for demonstrating that these models can assist in early diabetes diagnosis and improve patient outcomes.
+\end{itemize}
