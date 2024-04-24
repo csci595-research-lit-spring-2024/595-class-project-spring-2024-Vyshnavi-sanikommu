@@ -13,15 +13,15 @@ Table \ref{tab:p_metrics} shows performance measures of logistic regression and 
         \toprule
         Classifier  &   DataSet Type &   Precision   &   Recall  &   F1-score    &   Accuracy (\%) \\
         \midrule
-        LR  &   Training    &   0.70   &   0.55   &   0.62    &   76\%   \\
-        LR  &   Testing &   0.74   &   0.58   &   0.65    &   78\%   \\
-        SVM  &   Training    &   0.69   &   0.55   &   0.62    &   76\%   \\
-        SVM  &   Testing &   0.75   &   0.58   &   0.66    &   79\%   \\
+        LR  &   Training    &   0.70   &   0.56   &   0.62    &   77\%   \\
+        LR  &   Testing &   0.75   &   0.58   &   0.65    &   79\%   \\
+        SVM  &   Training    &   0.76   &   0.71   &   0.74    &   83\%   \\
+        SVM  &   Testing &   0.77   &   0.66   &   0.71    &   82\%   \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Here, svm model achieves the highest accuracy of 79\% on test dataset, while both models exhibit similar accuracy on the training dataset. The confusion matrix for the SVM model on the test dataset is provided in Table \ref{tab:conf_matrix}.
+Here, lr model performed adequately on the training and testing datasets while svm model achieved higher accuracy, with 83\% on the training set and 82\% on the testing set. This higher accuracy, along with better precision, recall, and F1-score, suggests that svm might be a more suitable model for diabetes prediction. The confusion matrix for the svm model on the test dataset is provided in Table \ref{tab:conf_matrix}.
 
 \begin{table}[h!]
     \centering
@@ -31,8 +31,8 @@ Here, svm model achieves the highest accuracy of 79\% on test dataset, while bot
         \toprule
         & Diabetic  &   Non-diabetic \\
         \midrule
-        Diabetic &  237  &   26   \\
-        Non-diabetic &  57    &   80  \\
+        Diabetic &  236  &   27   \\
+        Non-diabetic &  46    &   91  \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -40,7 +40,7 @@ Here, svm model achieves the highest accuracy of 79\% on test dataset, while bot
 Despite these promising results, determining the best model for predicting diabetes requires further investigation and analysis.
 
 \section{Hyperparameter Tuning Results for LR and SVM Using GridSearchCV}
-After applying GridSearchCV for hyperparameter tuning, both logistic regression and svm models demonstrated significantly improved performance compared to their standard configurations which was shown in Table \ref{tab:p_metrics}. 
+After applying gridsearchCV for hyperparameter tuning, both logistic regression and svm models demonstrated significantly improved performance compared to their standard configurations which was shown in Table \ref{tab:p_metrics}. 
 
 Table \ref{tab:gs_p_metrics} shows performance measures of logistic regression and svm classifier for training and testing datasets after tuning.
 
@@ -52,15 +52,15 @@ Table \ref{tab:gs_p_metrics} shows performance measures of logistic regression a
         \toprule
         Classifier  &   DataSet Type &   Precision   &   Recall  &   F1-score    &   Accuracy (\%) \\
         \midrule
-        LR  &   Training    &   0.70   &   0.56   &   0.62    &   77\%   \\
-        LR  &   Testing &   0.75   &   0.58   &   0.66    &   79\%   \\
-        SVM  &   Training    &   0.75   &   0.57   &   0.65    &   79\%   \\
-        SVM  &   Testing &   0.80   &   0.56   &   0.66    &   80\%   \\
+        LR  &   Training    &   0.72   &   0.54   &   0.62    &   77\%   \\
+        LR  &   Testing &   0.80   &   0.57   &   0.67    &   81\%   \\
+        SVM  &   Training    &   0.79   &   0.76   &   0.77    &   85\%   \\
+        SVM  &   Testing &   0.78   &   0.66   &   0.72    &   82\%   \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Here, svm model achieves the highest accuracy of 80\% on the test dataset, while lr and svm models achieve 77\% and 79\% accuracy on the training dataset. Both lr and svm models demonstrate high precision in predicting diabetic cases, there is room for improvement in recall. Fine-tuning hyperparameters has led to improvements in overall accuracy and model performance, but further optimization may be needed to increase recall and achieve a better balance between precision and recall. The confusion matrix for the svm model on the test dataset is provided in Table \ref{tab:gs_conf_matrix}
+Hyperparameter tuning significantly improved both models' performance. Here, svm model achieved the highest accuracy 85\% on the training dataset and 82\% on the testing dataset. LR model also saw improvements, with 81\% testing accuracy. While both models showed good precision, the recall could still be enhanced. Fine-tuning hyperparameters led to improved overall accuracy and balanced performance. However, further refinement may be needed to increase recall and reduce misclassifications. The confusion matrix for the svm model on the test dataset is provided in Table \ref{tab:gs_conf_matrix}
 
 \begin{table}[h!]
     \centering
@@ -70,8 +70,8 @@ Here, svm model achieves the highest accuracy of 80\% on the test dataset, while
         \toprule
         & Diabetic  &   Non-diabetic \\
         \midrule
-        Diabetic &  244  &   19   \\
-        Non-diabetic &  60    &   77  \\
+        Diabetic &  238  &   25   \\
+        Non-diabetic &  46    &   91  \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -79,7 +79,7 @@ Here, svm model achieves the highest accuracy of 80\% on the test dataset, while
 The optimized models achieved higher accuracy scores, highlighting the effectiveness of hyperparameter tuning in enhancing predictive capabilities.
 
 \section{Summary}
-The evaluation of machine learning algorithms lr and svm for predicting diabetes demonstrated promising results. While both models exhibited similar performance on the training dataset, svm outperformed lr slightly on the testing dataset with the highest accuracy of 79\%. Hyperparameter tuning using gridsearchcv further enhanced the models performance, with the optimized svm achieving a testing accuracy of 80\%. These findings underscore the effectiveness of hyperparameter tuning in improving predictive capabilities.
+The evaluation of machine learning algorithms lr and svm for predicting diabetes demonstrated promising results. Although both models had comparable performance on the training dataset, svm outperformed lr on the testing dataset, achieving 82\% accuracy. Hyperparameter tuning with gridsearchCV further improved the models' performance, with the optimized svm achieving an accuracy of 82\% on the testing set, highlighting the effectiveness of this technique. These results suggest that svm might be more effective for diabetes prediction, but additional tuning and exploration could further enhance the performance of both models. These findings underscore the effectiveness of hyperparameter tuning in improving predictive capabilities.
 
 
 

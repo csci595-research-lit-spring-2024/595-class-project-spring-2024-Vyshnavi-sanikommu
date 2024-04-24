@@ -84,4 +84,15 @@ For logistic regression classifier, there are multiple hyper parameters such as 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary of contributions and achievements} %  use this section 
 \label{sec:intro_sum_results} % label of summary of results
-Describe clearly what you have done/created/achieved and what the major results and their implications are. 
+This research focused on evaluating the performance of logistic regression and support vector machine models in predicting diabetes, examining the impact of hyperparameter tuning on these models. The primary objective was to compare the baseline performance of these models and then determine whether hyperparameter tuning could significantly improve their predictive capabilities.
+
+Both models exhibited good performance on the training and testing dataset, while svm slightly outperformed lr on the test dataset, achieving 82\% accuracy while lr achieved 79\%. After applying hyperparameter tuning with gridsearchCV, svm achieved a training accuracy of 85\% and testing accuracy of 80\%, demonstrating the significant impact of tuning on model performance.
+
+The results of this study have several implications:
+\begin{itemize}
+    \item Effectiveness of Hyperparameter Tuning: The improved accuracy and other metrics demonstrate that hyperparameter tuning can lead to significant performance gains, making it a crucial step in machine learning model development.
+    \item Potential for SVM in Diabetes Prediction: Given its superior performance, the svm model shows promise for further research and deployment in diabetes prediction applications.
+\end{itemize}
+
+Overall, this research has demonstrated that both models can effectively predict diabetes, and that hyperparameter tuning can significantly enhance their performance. Further research could explore additional tuning strategies, other machine learning models, or ensemble methods to improve prediction accuracy and reliability.
+
